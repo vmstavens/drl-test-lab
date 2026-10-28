@@ -1,0 +1,5 @@
+name: scripted
+controller: scripted
+episodes: 64
+max_steps: 1000
+batch_size: 16

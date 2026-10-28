@@ -1,0 +1,60 @@
+num_envs: 128
+memory_size: 1000000
+batch_size: 512
+gradient_steps: 2
+warmup_vector_steps: 4000
+discount_factor: 0.9995
+polyak: 0.005
+actor_learning_rate: 1.0e-05
+critic_learning_rate: 0.0003
+bellman_target_min: -15.0
+bellman_target_max: 100.0
+initial_action_std: 0.02
+minimum_action_std: 0.005
+maximum_action_std: 0.04
+actor_hidden_sizes:
+- 256
+- 256
+critic_hidden_sizes:
+- 512
+- 512
+- 256
+- 256
+- 128
+critic_layer_norm: true
+reference_replay_fraction: 0.3
+freeze_entropy_temperature: true
+initial_entropy_temperature: 0.001
+entropy_learning_rate: 0.0003
+previous_action_source: executed
+name: drlr2_sac
+budget:
+  unit: transitions
+  value: 100000000
+encoder_hidden_sizes:
+- 128
+- 128
+latent_dim: 8
+privileged_dim: 2
+chunk_steps: 64
+checkpoint_interval_transitions: 100000
+teacher_diffusion_steps: 4
+training_execution: fused
+evaluation_gate:
+  interval_transitions: 5000000
+  minimum_transitions: 5000000
+  episodes: 512
+  progress_episodes: 100
+  batch_size: 128
+  success_threshold: 0.95
+  seed_start: 2026090900
+  progress_seed_start: 2027090900
+bootstrap:
+  episodes: 64
+  minimum_successes: 40
+  minimum_success_rate: 0.8
+  seed_start: 10000
+handoff:
+  episodes: 512
+  minimum_successes: 400
+  seed_start: 2026091900

@@ -1,0 +1,18 @@
+name: diffusion_policy
+checkpoint: null
+obs_horizon: 2
+pred_horizon: 16
+action_horizon: 8
+num_diffusion_iters: 100
+batch_size: 256
+learning_rate: 0.0001
+num_epochs: 100
+diffusion_step_embed_dim: 256
+down_dims:
+- 256
+- 512
+- 1024
+validation_fraction: 0.2
+split_seed: 42
+weight_ema_decay: 0.995
+max_batches: null

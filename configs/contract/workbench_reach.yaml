@@ -1,0 +1,18 @@
+observation_layout:
+- x_m
+- y_m
+- vx_m_s
+- vy_m_s
+action_id: workbench_force_xy_v1
+action_low:
+- -1.0
+- -1.0
+action_high:
+- 1.0
+- 1.0
+action_units:
+- N
+- N
+coordinate_frame: world_xy
+preprocessing: identity_v1
+privileged_layout: [actuator_gain_normalized, viscous_load_normalized]

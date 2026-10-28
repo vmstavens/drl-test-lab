@@ -1,0 +1,10 @@
+name: workbench_reach
+registration_modules:
+- envs.workbench_reach
+env:
+  registry_name: WorkbenchReach
+  impl: jax
+  episode_length: 1000
+  ctrl_dt: 0.002
+  sim_dt: 0.0005
+  domain_level: 0.0

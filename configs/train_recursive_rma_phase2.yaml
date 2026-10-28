@@ -1,0 +1,19 @@
+defaults:
+  - train_recursive_drlr_rma
+  - _self_
+stage: train_recursive_rma_phase2
+phase1_job: null
+rma:
+  probabilities: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  num_envs: 64
+  history_length: 10
+  sample_stride: 50
+  collection_steps: 1000
+  replay_capacity: 65536
+  batch_size: 512
+  updates_per_round: 2000
+  learning_rate: 0.0001
+  step_dim: 6
+  temporal_dim: 5
+  evaluation_episodes: 512
+  seed_start: 2028090900

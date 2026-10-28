@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "source_repository": "dlo-insertion-lab",
+  "source_identity": "Reviewed working-tree file SHA-256 values; the implementation includes uncommitted insertion fixes.",
+  "upstream_learning_revision": "d739e9360280618ba34825dd03e9dcbbb3dfc0b5",
+  "template_base_revision": "ab8a481e3a6e9133f26c9e3f85b3efc19211fede",
+  "portable_modules": [
+    {
+      "path": "learning/reinforcement/budget.py",
+      "source_sha256": "9577385103ea664d24bd028e95c6eeffae348a409d5407e94bd0a2aea3c65822",
+      "template_snapshot_sha256": "9577385103ea664d24bd028e95c6eeffae348a409d5407e94bd0a2aea3c65822",
+      "modified_for_template": false
+    },
+    {
+      "path": "learning/reinforcement/crash_recovery.py",
+      "source_sha256": "7ac8297c3674ed2d811bb417272086e5dc7f54fd494a3feef8ec77ca207062c4",
+      "template_snapshot_sha256": "7ac8297c3674ed2d811bb417272086e5dc7f54fd494a3feef8ec77ca207062c4",
+      "modified_for_template": false
+    },
+    {
+      "path": "learning/reinforcement/policy_rollouts.py",
+      "source_sha256": "8b4d2bbd2e61a73caedad11e93e13ee3eff5f05ca854103a82159f10b8959f53",
+      "template_snapshot_sha256": "84e1ce03326c6922ef6661f0453cfbfb586c89a14702d15a1b29a6bb76c4aaf4",
+      "modified_for_template": true
+    },
+    {
+      "path": "learning/reinforcement/compiled_rollouts.py",
+      "source_sha256": "47025a896ed686557b4feb34215a23101dd83c688635be8927d7bcdf09360117",
+      "template_snapshot_sha256": "d4b5f22e7b6fdca748d7b04ea43df9c7453bfda43771f55d6d9e29617482d833",
+      "modified_for_template": true
+    },
+    {
+      "path": "learning/data/schema.py",
+      "source_sha256": "e883e3041504ea08980e590b4f5aa21afd55dce99615d0eb4a0182787eb4897b",
+      "template_snapshot_sha256": "e883e3041504ea08980e590b4f5aa21afd55dce99615d0eb4a0182787eb4897b",
+      "modified_for_template": false
+    },
+    {
+      "path": "learning/data/sequences.py",
+      "source_sha256": "270e9e55bb77146dd130fa35c2fa8644009b51364ada381b7c2047b46168ad48",
+      "template_snapshot_sha256": "270e9e55bb77146dd130fa35c2fa8644009b51364ada381b7c2047b46168ad48",
+      "modified_for_template": false
+    }
+  ],
+  "reexpressed_modules": [
+    {
+      "path": "learning/reinforcement/drlr2.py",
+      "template_snapshot_sha256": "cbd42fadb1e7cefe9ebe1514f13da89c8a8e64fc9720841d8b0b4c33698143da",
+      "sources": [
+        {
+          "path": "learning/reinforcement/compiled_drlr.py",
+          "sha256": "cee4b4b90324048724948c7c3d4f8f3b31ca269204b7b5627481962665200ab4"
+        },
+        {
+          "path": "learning/reinforcement/brax_networks.py",
+          "sha256": "67b560d6882091ebbdb045d56f5d5babf8e5df6ae7ba2b3ea16f1b2ff3de1e8f"
+        }
+      ]
+    },
+    {
+      "path": "learning/reinforcement/recursive.py",
+      "template_snapshot_sha256": "6d1469b12b6f15ec703e23d3b814d509dec1cc4b0b10b71c3d93e4780a41f905",
+      "sources": [
+        {
+          "path": "learning/reinforcement/compiled_drlr.py",
+          "sha256": "cee4b4b90324048724948c7c3d4f8f3b31ca269204b7b5627481962665200ab4"
+        },
+        {
+          "path": "learning/reinforcement/sweep.py",
+          "sha256": "1ecd52d2f9b7bace4779021072600ee8ad6106cedd00bf341062795fe2d8c7ad"
+        }
+      ]
+    },
+    {
+      "path": "learning/reinforcement/rma.py",
+      "template_snapshot_sha256": "51922f4b20b87bf754962c5b4f17bfcf9dede01762dc4f2e98bde42e5fe963fb",
+      "sources": [
+        {
+          "path": "learning/reinforcement/ppo_rma_phase2.py",
+          "sha256": "da511998a657362ad9569875dbea4cbecf7200c3e28ee22895627648ef454a59"
+        }
+      ]
+    },
+    {
+      "path": "learning/imitation/diffusion_policy.py",
+      "template_snapshot_sha256": "1c1312127399f697a0c9a236d42287765f028aea849ade67c3733709a79f0b1b",
+      "sources": [
+        {
+          "path": "learning/imitation/diffusion_policy.py",
+          "sha256": "48e09dffa654fbf1fcc20702b303b0109bfdb16ef23fa2a05b8a0af011edad3c"
+        }
+      ]
+    },
+    {
+      "path": "learning/collection/collect.py",
+      "template_snapshot_sha256": "927422f63681b5c8ce62816bd5736c22047067f4d58537b59733f1befc7133bf",
+      "sources": [
+        {
+          "path": "learning/collection/collect.py",
+          "sha256": "3f6484a2d5f5697b8469c697a07b3dd5084b9ce8e3b56ac3b3ac1e8605847517"
+        }
+      ]
+    },
+    {
+      "path": "learning/data/prepare.py",
+      "template_snapshot_sha256": "2c74ac1b0302f60d28221ec70bfb995cf83407e08f475ba80abfb12d413d95d9",
+      "sources": [
+        {
+          "path": "learning/data/prepare.py",
+          "sha256": "aa29d042dd92e3217909f89f14922fb0e5bba8d6c8e3ed75f255c2ac3e73de66"
+        }
+      ]
+    },
+    {
+      "path": "tools/benchmark_fused_training.py",
+      "template_snapshot_sha256": "f565bab5e1f89e3a3165ba5a81a1e4183dea42ca2759c4f0241a1f3c1d30ea75",
+      "sources": [
+        {
+          "path": "learning/evaluation/fused_training_study.py",
+          "sha256": "05f2d548b07d315d6bed0b34900d96685783880944a7281d05cbbeb91637e010"
+        },
+        {
+          "path": "tools/benchmark_fused_training.py",
+          "sha256": "8d49a357739b9e23c26ed17b9b5cf8380d81435cdcb0af42882389ca2564f164"
+        }
+      ]
+    }
+  ],
+  "source_evidence_sha256": "1bd23317fe8dc79765b94f48bbf601c3e149a69010489127e3ea3d34f4c311c4",
+  "intentional_differences": "docs/canonical-learning-setup.md",
+  "runtime_dependencies_on_source_checkout": false,
+  "scope": "One task boundary and supported DRLR/RMA path; legacy adapters, physics-transfer code, historical learning presets and unrelated experiments excluded.",
+  "snapshot_note": "Template hashes identify the initial reviewed transfer snapshot, not a requirement that future research adaptations remain byte-identical.",
+  "validation": {
+    "template_cpu_tests_passed": 87,
+    "insertion_baseline_tests_passed": 17,
+    "independent_locked_environment": true,
+    "full_budget_convergence_measured": false
+  }
+}

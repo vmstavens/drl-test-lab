@@ -1,0 +1,8 @@
+id: workbench_reach_processed_v1
+kind: processed
+path: ${runtime.data_root}/workbench_reach/processed/v1
+manifest: ${dataset.path}/manifest.json
+expected:
+  observation_dim: 4
+  action_dim: 2
+  control_dt: 0.002

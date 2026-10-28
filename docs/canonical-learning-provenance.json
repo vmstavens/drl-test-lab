@@ -1,0 +1,497 @@
+{
+  "source_repository": "dlo-manipulation-lab",
+  "artifacts": [
+    {
+      "source": "runs/insert_diameter15mm_shared_bias/bias_5mm/jobs/drlr2_rma_sparse_dr100_reset_angle45_shared_bias_seed0/stage_config.json",
+      "snapshot": "reference/00_stage_config.json",
+      "sha256": "18c1e1f90fc5ba1320a27110cce14c6c2c9e68003258a19e2b0da5f3ea1104af"
+    },
+    {
+      "source": "runs/insert_diameter15mm_shared_bias/bias_5mm/jobs/drlr2_rma_sparse_dr100_reset_angle45_shared_bias_seed0/summary.json",
+      "snapshot": "reference/01_summary.json",
+      "sha256": "8f042dc90e4020e37a6ee01a07bcef1ef418066c30104690ec64755c258dd293"
+    },
+    {
+      "source": "configs/train_drlr_insert_shared_bias.yaml",
+      "snapshot": "reference/02_train_drlr_insert_shared_bias.yaml",
+      "sha256": "317d1b0f7151742c3b6a899c14892a91e0cab8de7128f0c77a10a6d719e018be"
+    },
+    {
+      "source": "runs/insert_diameter15mm_shared_bias/phase2_history10_10hz/resolved_config.yaml",
+      "snapshot": "reference/03_resolved_config.yaml",
+      "sha256": "3a3badb57144f19b66bba4a4c7ea5b02edf2c061e3a6547158ae79c03c668944"
+    },
+    {
+      "source": "runs/insert_diameter15mm_shared_bias/phase2_history10_10hz/summary.json",
+      "snapshot": "reference/04_summary.json",
+      "sha256": "5612325dc5e06e4e5495053210cdb833a4fe205dcde1722508704a09d15861ce"
+    }
+  ],
+  "source_rl": {
+    "budget": {
+      "value": 100000000,
+      "unit": "transitions"
+    },
+    "num_envs": 128,
+    "log_interval_transitions": 100000,
+    "checkpoint_interval_transitions": 100000,
+    "warmup_vector_steps": 4000,
+    "warmup_chunk_vector_steps": 20,
+    "teacher_diffusion_steps": 4,
+    "learn_during_warmup": true,
+    "train_actor_during_warmup": false,
+    "memory_size": 1000000,
+    "batch_size": 512,
+    "gradient_steps": 2,
+    "discount_factor": 0.9995,
+    "polyak": 0.005,
+    "actor_learning_rate": 1e-05,
+    "critic_learning_rate": 0.0003,
+    "bellman_target_min": -15.0,
+    "bellman_target_max": 100.0,
+    "entropy_learning_rate": 0.0003,
+    "initial_action_std": 0.02,
+    "minimum_action_std": 0.005,
+    "maximum_action_std": 0.04,
+    "actor_hidden_sizes": [
+      256,
+      256
+    ],
+    "critic_hidden_sizes": [
+      512,
+      512,
+      256,
+      256,
+      128
+    ],
+    "decision_block": true,
+    "batch_il_queries": true,
+    "soft_update_beta": 0.2,
+    "action_ema_enabled": false,
+    "action_ema_alpha": 0.75,
+    "include_previous_ema_action": true,
+    "fused_train_chunk": false,
+    "decoupled_teacher_inference": false,
+    "bound_privileged_latent": false,
+    "observation_normalization_std_min": 0.001,
+    "freeze_observation_normalizer": true,
+    "batch_mean_candidate_selection": false,
+    "require_both_critics_for_actor": true,
+    "persistent_reference_replay": true,
+    "reference_replay_fraction": 0.3,
+    "stage_reference_handoff": {
+      "enabled": true,
+      "episodes": 512,
+      "batch_size": 32,
+      "max_successful_episodes": 512,
+      "minimum_successful_episodes": 400,
+      "seed_start": 2026091900
+    },
+    "critic_layer_norm": true,
+    "freeze_entropy_temperature": true,
+    "initial_entropy_temperature": 0.001,
+    "selection_conditioned_entropy_backup": true,
+    "scheduled_bc_loss": false,
+    "warmup_actor_bc_only": false,
+    "warmup_mix_reference_replay": true,
+    "evaluation_gate": {
+      "enabled": true,
+      "interval_transitions": 500000,
+      "minimum_transitions": 500000,
+      "episodes": 512,
+      "batch_size": 32,
+      "success_threshold": 0.95,
+      "consecutive_passes": 1,
+      "seed_start": 2026090900,
+      "require_acceptance": true,
+      "accept_warmup_actor": true
+    }
+  },
+  "source_exact_candidate_selection": true,
+  "claims": {
+    "phase1_validation": {
+      "successes": 490,
+      "episodes": 512
+    },
+    "phase2_evaluation": {
+      "successes": 471,
+      "episodes": 512
+    },
+    "single_unchanged_dp_to_full_dr_reproduction": false,
+    "force_adaptation_validated": false
+  },
+  "removed_launch_presets": [
+    "configs/train_force_rma_dr0_isolated.yaml",
+    "configs/train_force_rma_dr0_isolated_cg.yaml",
+    "configs/train_force_rma_phase2.yaml",
+    "configs/train_force_rma_phase2_restored.yaml",
+    "configs/train_recursive_force_rma.yaml",
+    "configs/train_recursive_force_rma_original_compliant.yaml",
+    "configs/train_recursive_force_rma_pilot.yaml",
+    "configs/train_recursive_force_rma_pose.yaml",
+    "configs/train_recursive_force_rma_pose_lpf20.yaml",
+    "configs/train_recursive_force_rma_pose_lpf20_bias.yaml",
+    "configs/train_recursive_force_rma_pose_lpf20_bias_cg.yaml",
+    "configs/train_recursive_force_rma_pose_lpf20_fast.yaml",
+    "configs/train_recursive_force_rma_pose_zero_step.yaml",
+    "configs/train_recursive_force_rma_pose_zero_step_gamma9999.yaml",
+    "configs/train_recursive_force_rma_restored.yaml",
+    "configs/train_recursive_robot_base_force.yaml",
+    "configs/train_recursive_robot_base_force_lpf20.yaml",
+    "configs/validate_force_rma.yaml",
+    "configs/validate_force_rma_lpf20_fast.yaml",
+    "configs/validate_force_rma_pose.yaml",
+    "configs/validate_force_rma_restored.yaml",
+    "configs/validate_force_rma_zero_step.yaml",
+    "configs/train_drlr2.yaml",
+    "configs/rl/drlr2_sac.yaml",
+    "configs/experiment/insert_drlr2_baseline.yaml"
+  ],
+  "source_checkout_revision": "d739e9360280618ba34825dd03e9dcbbb3dfc0b5",
+  "training_run_code_revision": "not independently established by saved stage config; snapshots are authoritative for settings",
+  "source_lineage_evidence": [
+    {
+      "source": "runs/grasped_end_dlo_insert_tip_reset_stiff_wide/train_drlr_insert_geometry_only_dp_rma_sparse/2026-09-05/17-19-38/jobs/drlr2_rma_sparse_dr100_seed0/summary.json",
+      "sha256": "639009e5f67a9f4bf098c39e66d5a94b90351566bcb1d0a43ffac61b9a1eff6e",
+      "evaluation_gate": {
+        "episodes": 512,
+        "batch_size": 32,
+        "interval_transitions": 500000,
+        "minimum_transitions": 500000,
+        "success_threshold": 0.8,
+        "consecutive_passes": 1,
+        "seed_start": 2026090200,
+        "require_acceptance": true,
+        "accept_warmup_actor": true,
+        "early_stopped": true,
+        "accepted": true,
+        "warmup_accepted": true,
+        "maximum_consecutive_passes": 0,
+        "best": {
+          "phase": "end_of_warmup",
+          "transition_step": 512000,
+          "episodes": 512,
+          "successes": 419,
+          "success_rate": 0.818359375,
+          "mean_length": 414.435546875,
+          "successful_mean_length": 173.48687350835323
+        },
+        "history": [
+          {
+            "phase": "end_of_warmup",
+            "transition_step": 512000,
+            "episodes": 512,
+            "successes": 419,
+            "success_rate": 0.818359375,
+            "mean_length": 414.435546875,
+            "successful_mean_length": 173.48687350835323
+          }
+        ]
+      },
+      "parent_actor": "/home/vims/git/dlo-manipulation-lab/runs/grasped_end_dlo_insert_tip_reset_stiff_wide/train_drlr_insert_geometry_only_dp_rma_sparse/2026-09-05/17-19-38/jobs/drlr2_rma_sparse_dr099_seed0/final_actor.flax"
+    },
+    {
+      "source": "runs/grasped_end_dlo_insert_tip_reset_stiff_wide/train_drlr_insert_dr100_clearance1_polish/2026-09-07/20-14-16/jobs/drlr2_rma_sparse_dr100_reset_angle45_radius7_seed0/summary.json",
+      "sha256": "7d7083577124b7c4e51b7e6fbb0445692073323f875f2898822aed6700cb4a4f",
+      "evaluation_gate": {
+        "episodes": 512,
+        "batch_size": 32,
+        "interval_transitions": 500000,
+        "minimum_transitions": 500000,
+        "success_threshold": 0.99,
+        "consecutive_passes": 1,
+        "seed_start": 2026090200,
+        "require_acceptance": true,
+        "accept_warmup_actor": true,
+        "early_stopped": true,
+        "accepted": true,
+        "warmup_accepted": false,
+        "maximum_consecutive_passes": 1,
+        "best": {
+          "transition_step": 14024960,
+          "episodes": 512,
+          "successes": 508,
+          "success_rate": 0.9921875,
+          "mean_length": 170.779296875,
+          "successful_mean_length": 160.31299212598427
+        },
+        "history": [
+          {
+            "phase": "end_of_warmup",
+            "transition_step": 512000,
+            "episodes": 512,
+            "successes": 459,
+            "success_rate": 0.896484375,
+            "mean_length": 358.849609375,
+            "successful_mean_length": 227.08278867102396
+          },
+          {
+            "transition_step": 612096,
+            "episodes": 512,
+            "successes": 26,
+            "success_rate": 0.05078125,
+            "mean_length": 1436.724609375,
+            "successful_mean_length": 253.96153846153845
+          },
+          {
+            "transition_step": 1012480,
+            "episodes": 512,
+            "successes": 44,
+            "success_rate": 0.0859375,
+            "mean_length": 1393.291015625,
+            "successful_mean_length": 258.29545454545456
+          },
+          {
+            "transition_step": 1512960,
+            "episodes": 512,
+            "successes": 63,
+            "success_rate": 0.123046875,
+            "mean_length": 1342.751953125,
+            "successful_mean_length": 222.04761904761904
+          },
+          {
+            "transition_step": 2013440,
+            "episodes": 512,
+            "successes": 189,
+            "success_rate": 0.369140625,
+            "mean_length": 1069.48046875,
+            "successful_mean_length": 333.72486772486775
+          },
+          {
+            "transition_step": 2513920,
+            "episodes": 512,
+            "successes": 203,
+            "success_rate": 0.396484375,
+            "mean_length": 995.87890625,
+            "successful_mean_length": 228.52216748768473
+          },
+          {
+            "transition_step": 3014400,
+            "episodes": 512,
+            "successes": 307,
+            "success_rate": 0.599609375,
+            "mean_length": 829.61328125,
+            "successful_mean_length": 381.96091205211724
+          },
+          {
+            "transition_step": 3514880,
+            "episodes": 512,
+            "successes": 438,
+            "success_rate": 0.85546875,
+            "mean_length": 511.220703125,
+            "successful_mean_length": 344.1666666666667
+          },
+          {
+            "transition_step": 4015360,
+            "episodes": 512,
+            "successes": 451,
+            "success_rate": 0.880859375,
+            "mean_length": 389.33203125,
+            "successful_mean_length": 239.10864745011085
+          },
+          {
+            "transition_step": 4515840,
+            "episodes": 512,
+            "successes": 477,
+            "success_rate": 0.931640625,
+            "mean_length": 369.287109375,
+            "successful_mean_length": 286.3207547169811
+          },
+          {
+            "transition_step": 5016320,
+            "episodes": 512,
+            "successes": 462,
+            "success_rate": 0.90234375,
+            "mean_length": 433.326171875,
+            "successful_mean_length": 317.88528138528136
+          },
+          {
+            "transition_step": 5516800,
+            "episodes": 512,
+            "successes": 502,
+            "success_rate": 0.98046875,
+            "mean_length": 251.810546875,
+            "successful_mean_length": 226.94621513944224
+          },
+          {
+            "transition_step": 6017280,
+            "episodes": 512,
+            "successes": 490,
+            "success_rate": 0.95703125,
+            "mean_length": 262.75,
+            "successful_mean_length": 207.2
+          },
+          {
+            "transition_step": 6517760,
+            "episodes": 512,
+            "successes": 485,
+            "success_rate": 0.947265625,
+            "mean_length": 293.587890625,
+            "successful_mean_length": 226.42680412371135
+          },
+          {
+            "transition_step": 7018240,
+            "episodes": 512,
+            "successes": 491,
+            "success_rate": 0.958984375,
+            "mean_length": 262.607421875,
+            "successful_mean_length": 209.68431771894095
+          },
+          {
+            "transition_step": 7518720,
+            "episodes": 512,
+            "successes": 500,
+            "success_rate": 0.9765625,
+            "mean_length": 260.04296875,
+            "successful_mean_length": 230.284
+          },
+          {
+            "transition_step": 8019200,
+            "episodes": 512,
+            "successes": 504,
+            "success_rate": 0.984375,
+            "mean_length": 218.671875,
+            "successful_mean_length": 198.33333333333334
+          },
+          {
+            "transition_step": 8519680,
+            "episodes": 512,
+            "successes": 496,
+            "success_rate": 0.96875,
+            "mean_length": 225.689453125,
+            "successful_mean_length": 184.5826612903226
+          },
+          {
+            "transition_step": 9020160,
+            "episodes": 512,
+            "successes": 494,
+            "success_rate": 0.96484375,
+            "mean_length": 239.091796875,
+            "successful_mean_length": 193.14777327935224
+          },
+          {
+            "transition_step": 9520640,
+            "episodes": 512,
+            "successes": 482,
+            "success_rate": 0.94140625,
+            "mean_length": 280.306640625,
+            "successful_mean_length": 204.3921161825726
+          },
+          {
+            "transition_step": 10021120,
+            "episodes": 512,
+            "successes": 492,
+            "success_rate": 0.9609375,
+            "mean_length": 249.4921875,
+            "successful_mean_length": 198.65853658536585
+          },
+          {
+            "transition_step": 10521600,
+            "episodes": 512,
+            "successes": 504,
+            "success_rate": 0.984375,
+            "mean_length": 208.380859375,
+            "successful_mean_length": 187.87896825396825
+          },
+          {
+            "transition_step": 11022080,
+            "episodes": 512,
+            "successes": 499,
+            "success_rate": 0.974609375,
+            "mean_length": 215.21875,
+            "successful_mean_length": 181.74749498997997
+          },
+          {
+            "transition_step": 11522560,
+            "episodes": 512,
+            "successes": 496,
+            "success_rate": 0.96875,
+            "mean_length": 234.923828125,
+            "successful_mean_length": 194.11491935483872
+          },
+          {
+            "transition_step": 12023040,
+            "episodes": 512,
+            "successes": 504,
+            "success_rate": 0.984375,
+            "mean_length": 202.37109375,
+            "successful_mean_length": 181.77380952380952
+          },
+          {
+            "transition_step": 12523520,
+            "episodes": 512,
+            "successes": 495,
+            "success_rate": 0.966796875,
+            "mean_length": 242.69921875,
+            "successful_mean_length": 199.5191919191919
+          },
+          {
+            "transition_step": 13024000,
+            "episodes": 512,
+            "successes": 500,
+            "success_rate": 0.9765625,
+            "mean_length": 219.587890625,
+            "successful_mean_length": 188.858
+          },
+          {
+            "transition_step": 13524480,
+            "episodes": 512,
+            "successes": 490,
+            "success_rate": 0.95703125,
+            "mean_length": 228.67578125,
+            "successful_mean_length": 171.59591836734694
+          },
+          {
+            "transition_step": 14024960,
+            "episodes": 512,
+            "successes": 508,
+            "success_rate": 0.9921875,
+            "mean_length": 170.779296875,
+            "successful_mean_length": 160.31299212598427
+          }
+        ]
+      },
+      "parent_actor": "/home/vims/git/dlo-manipulation-lab/runs/grasped_end_dlo_insert_tip_reset_stiff_wide/train_drlr_insert_dr100_radius8_polish/2026-09-07/19-27-16/jobs/drlr2_rma_sparse_dr100_reset_angle45_radius9_seed0/best_evaluated_actor.flax"
+    },
+    {
+      "source": "runs/insert_modulus_02_10/jobs/drlr2_rma_sparse_dr100_reset_angle45_modulus0p2_seed0/summary.json",
+      "sha256": "e4fca060cfa3b90cff6276af1e2a4d2c4f12ea987170c570619fc54c0fe18223",
+      "evaluation_gate": {
+        "episodes": 512,
+        "batch_size": 32,
+        "interval_transitions": 500000,
+        "minimum_transitions": 500000,
+        "success_threshold": 0.99,
+        "consecutive_passes": 1,
+        "seed_start": 2026090200,
+        "require_acceptance": true,
+        "accept_warmup_actor": true,
+        "early_stopped": true,
+        "accepted": true,
+        "warmup_accepted": true,
+        "maximum_consecutive_passes": 0,
+        "best": {
+          "phase": "end_of_warmup",
+          "transition_step": 512000,
+          "episodes": 512,
+          "successes": 507,
+          "success_rate": 0.990234375,
+          "mean_length": 170.373046875,
+          "successful_mean_length": 157.2603550295858
+        },
+        "history": [
+          {
+            "phase": "end_of_warmup",
+            "transition_step": 512000,
+            "episodes": 512,
+            "successes": 507,
+            "success_rate": 0.990234375,
+            "mean_length": 170.373046875,
+            "successful_mean_length": 157.2603550295858
+          }
+        ]
+      },
+      "parent_actor": "/home/vims/git/dlo-manipulation-lab/runs/insert_modulus_02_10/jobs/drlr2_rma_sparse_dr100_reset_angle45_modulus0p3_seed0/final_actor.flax"
+    }
+  ]
+}
