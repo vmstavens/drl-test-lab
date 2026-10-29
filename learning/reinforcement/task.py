@@ -68,5 +68,33 @@ class Task:
         )
         return 2 * (action - low) / (high - low) - 1
 
+    def model_state(self, state):
+        """Privileged Markov state, separate from the deployed actor observation."""
+        raw = state.replace(obs=state.obs[..., : self.observation_size])
+        return jax.vmap(self.base.model_state)(raw)
+
+    def model_goal(self, state):
+        return jax.vmap(self.base.model_goal)(state)
+
+    def model_context(self, state):
+        return state.info["privileged"]
+
+    def model_observation(self, state, goal, context):
+        return jax.vmap(self.base.model_observation)(state, goal, context)
+
+    def model_project(self, state):
+        return jax.vmap(self.base.model_project)(state)
+
+    def model_action(self, state, requested):
+        if hasattr(self.base, "model_action"):
+            return jax.vmap(self.base.model_action)(state, requested)
+        return jp.clip(requested, -1.0, 1.0)
+
+    def model_transition(self, predicted, state, executed):
+        predicted = self.model_project(predicted)
+        if hasattr(self.base, "model_transition"):
+            return jax.vmap(self.base.model_transition)(predicted, state, executed)
+        return predicted
+
     def close(self):
         self.base.close()

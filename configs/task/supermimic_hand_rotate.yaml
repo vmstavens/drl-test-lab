@@ -1,0 +1,18 @@
+name: supermimic_hand_rotate
+registration_modules: [envs.supermimic_hand]
+env:
+  registry_name: SuperMimicCubeRotateZ
+  mode: rotate
+  impl: warp
+  episode_length: 200
+  ctrl_dt: 0.05
+  sim_dt: 0.01
+  action_scale: 0.5
+  hold_seconds: 0.25
+  success_threshold: 0.2
+  mass_range: [1.0, 1.0]
+  friction_range: [1.0, 1.0]
+  rotation_speed: 2.0
+  impulse_step: -1
+  impulse_velocity: [0.0, 0.0, 0.0]
+  menagerie_path: null

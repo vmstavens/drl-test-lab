@@ -42,3 +42,11 @@ notifications use `runtime.notifications.*`; topic/token values come from
 environment variables, never committed config. Notifications are disabled by
 default. Existing publication matrices/protocols remain usable with the new
 learning workflows; see [the publication guide](../docs/publication.md).
+
+The separate `train_supermimic.yaml` workflow composes `supermimic/default`,
+`supermimic/hand`, `supermimic/visual` or `supermimic/visual_dagger`. Match the task
+and contract (`supermimic_reach`, `supermimic_hand_rotate`, or
+`supermimic_hand_reorient`). The independent method's matrices and held-out hand
+evaluation protocol are under `research/`; see
+[its experiment guide](../docs/methods/supermimic.md). These configurations do not
+add another canonical phase-one DRLR recipe.

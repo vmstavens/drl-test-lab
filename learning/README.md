@@ -25,3 +25,9 @@ successful-reference replay, and separate RMA history adaptation.
 `workflows -> learning -> envs` is the dependency direction. Task classes never
 import learning algorithms. See ../TEMPLATE.md for the explicit task protocol
 and ../docs/canonical-learning-setup.md for source evidence and adaptations.
+
+`supermimic/` is an independent research track with autoregressive learned dynamics,
+BPTT actor updates, simulator/model PPO controls, held-out diagnostics, strict
+actor/model bundles and visual experiments. It uses the same Task boundary and
+leaves the canonical recursive learner unchanged. See
+[the method guide](../docs/methods/supermimic.md).

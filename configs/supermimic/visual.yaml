@@ -1,0 +1,8 @@
+defaults:
+  - hand
+# Direct visual learning uses a supervised differentiable image head.
+observation: rgb
+num_envs: 16
+holdout_envs: 2
+batch_size: 32
+replay_steps: 256

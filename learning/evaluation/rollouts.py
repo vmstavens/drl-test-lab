@@ -59,7 +59,9 @@ def rollout_episode(
     steps = 0
     success = None
     while steps < max_steps and not bool(np.asarray(state.done)):
-        action = np.asarray(policy.act(state.obs))
+        adapter = getattr(policy, "observation_from_state", None)
+        observation = adapter(environment, state) if adapter else state.obs
+        action = np.asarray(policy.act(observation))
         if action.shape != (environment.action_size,) or not np.isfinite(action).all():
             raise ValueError("Policy must emit a finite unbatched environment action.")
         state = step(state, action)

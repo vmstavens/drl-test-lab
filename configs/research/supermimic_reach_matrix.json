@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_root": "../..",
+  "output_root": "../../runs/research/supermimic_reach",
+  "workflow": "workflows.train_supermimic",
+  "overrides": [
+    "task=supermimic_reach",
+    "contract=supermimic_reach"
+  ],
+  "axes": {
+    "supermimic.method": [
+      "ppo_sim",
+      "ppo_wm",
+      "supermimic"
+    ],
+    "seed": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

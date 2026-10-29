@@ -1,0 +1,5 @@
+defaults:
+  - visual
+method: visual_dagger
+# A state actor with the same task contract is required when executing.
+teacher_manifest: null

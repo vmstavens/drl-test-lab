@@ -160,3 +160,10 @@ env = registry.load("GraspedEndDloInsert")
 Use the project adapter when domain-randomizer lookup or project suite metadata
 is needed; Playground does not currently provide a public API for registering
 either of those.
+
+`supermimic_reach.py` and `supermimic_hand.py` define isolated research variants:
+dense reaching, fixed-goal LEAP cube reorientation and commanded cube rotation.
+They declare world-state, goal and actuator hooks for learned dynamics while
+keeping physics outside the learner. The hand uses Playground's pinned robot
+assets and explicit executed-increment feedback. See
+[the benchmark contracts](../docs/methods/supermimic.md).

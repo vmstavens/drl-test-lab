@@ -70,6 +70,14 @@ def load_policy(path: Path, environment: Any, *, deterministic: bool = True) -> 
         and getattr(environment, "learning_contract", None) != contract
     ):
         raise ValueError("Checkpoint semantic contract differs from the environment")
+    model_spec = manifest.get("config", {}).get("model_spec")
+    if (
+        model_spec is not None
+        and getattr(environment, "model_spec", None) != model_spec
+    ):
+        raise ValueError(
+            "Checkpoint world-state/model contract differs from environment"
+        )
     checkpoint = Path(manifest["checkpoint"]).expanduser()
     if not checkpoint.is_absolute():
         checkpoint = path.resolve().parent / checkpoint

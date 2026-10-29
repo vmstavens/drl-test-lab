@@ -92,6 +92,25 @@ def start_run(config: dict, output: Path) -> dict:
     initial_checkpoint = config.get("il", {}).get("checkpoint")
     if initial_checkpoint:
         inputs["initial_policy_checkpoint"] = fingerprint(Path(initial_checkpoint))
+    teacher = config.get("supermimic", {}).get("teacher_manifest")
+    if teacher:
+        path = Path(teacher).expanduser().resolve()
+        inputs["teacher_manifest"] = fingerprint(path)
+        if path.is_file():
+            inputs["teacher_checkpoint"] = fingerprint(
+                relative_to_file(read_json(path)["checkpoint"], path)
+            )
+    world_model = config.get("supermimic", {}).get("model_manifest")
+    if world_model:
+        path = Path(world_model).expanduser().resolve()
+        inputs["world_model_manifest"] = fingerprint(path)
+        if path.is_file():
+            inputs["world_model_checkpoint"] = fingerprint(
+                relative_to_file(read_json(path)["checkpoint"], path)
+            )
+    menagerie = config.get("task", {}).get("env", {}).get("menagerie_path")
+    if menagerie:
+        inputs["leap_assets"] = fingerprint(Path(menagerie) / "leap_hand" / "assets")
     for name, path in config.get("runtime", {}).get("provenance_inputs", {}).items():
         inputs[f"extra/{name}"] = fingerprint(Path(path))
     evaluation = config.get("evaluation", {})

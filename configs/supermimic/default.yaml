@@ -1,0 +1,45 @@
+# Small development settings; these are not the paper's humanoid recipe.
+method: supermimic
+observation: state
+iterations: 1000
+num_envs: 16
+holdout_envs: 2
+replay_steps: 1000
+warmup_steps: 32
+collect_steps: 8
+window_steps: 8
+horizon_steps: 32
+batch_size: 64
+model_updates: 10
+learning_rate: 0.0002
+actor_widths: [128, 128]
+model_widths: [256, 256, 256]
+critic_widths: [128, 64]
+pixel_widths: [256, 256]
+action_noise: 0.1
+reward_scale: 1.0
+gamma: 0.99
+gae_lambda: 0.95
+use_critic: true
+critic_epochs: 5
+ppo_epochs: 4
+ppo_clip: 0.2
+entropy_coefficient: 0.001
+evaluation_interval: 100
+checkpoint_interval: 500
+teacher_manifest: null
+dagger_teacher_iterations: 100
+pixels:
+  shape: [64, 64, 3]
+  camera: side
+evaluation:
+  episodes: 32
+  seed_start: 1000000
+  target_success_rate: 0.9
+diagnostics:
+  gradient_probe: true
+  probe_steps: 4
+  probe_epsilon: 0.02
+# Optional shared frozen-model optimizer comparison; null means online from scratch.
+model_manifest: null
+freeze_model: false

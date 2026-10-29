@@ -1,0 +1,9 @@
+defaults:
+  - default
+# 0.20 s model fitting and 0.60 s imagination at 50 ms control.
+num_envs: 64
+holdout_envs: 8
+window_steps: 4
+horizon_steps: 12
+batch_size: 128
+reward_scale: 0.05

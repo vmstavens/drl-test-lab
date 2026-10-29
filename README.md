@@ -110,3 +110,18 @@ See [the tools guide](tools/README.md) for throughput benchmarking and recovery,
 thin Hydra launchers; `configs/` contains the versioned experiment recipe.
 `data/` and `runs/` hold ignored generated artifacts. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for verification commands.
+
+## Independent research methods
+
+This repository also hosts isolated implementations of new papers, with shared
+simulation contracts and evaluation tools. The first additional track is
+[SuperMimic-style learned dynamics and analytic policy gradients](docs/methods/supermimic.md),
+including simulator/model PPO comparisons, LEAP hand benchmarks, and separate
+visual DAgger and direct RGB experiments. Preview it with:
+
+```bash
+uv run --no-sync python -m workflows.train_supermimic
+```
+
+See the [paper index](notes/README.md). Each method must establish its own learning
+results; the canonical DRLR/RMA recipe remains unchanged.

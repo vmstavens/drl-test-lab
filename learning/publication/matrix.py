@@ -60,6 +60,8 @@ def plan_matrix(path: Path) -> list[dict]:
                 "evaluation.policy_manifest",
                 "evaluation.protocol",
                 "il.checkpoint",
+                "supermimic.teacher_manifest",
+                "supermimic.model_manifest",
                 "dataset.path",
                 "dataset.manifest",
             }:
@@ -73,7 +75,12 @@ def plan_matrix(path: Path) -> list[dict]:
                         artifact = root / artifact
                     job_inputs.append(fingerprint(artifact))
                     if (
-                        key.lstrip("+") == "evaluation.policy_manifest"
+                        key.lstrip("+")
+                        in {
+                            "evaluation.policy_manifest",
+                            "supermimic.teacher_manifest",
+                            "supermimic.model_manifest",
+                        }
                         and artifact.is_file()
                     ):
                         job_inputs.append(
